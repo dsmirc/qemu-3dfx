@@ -39,7 +39,8 @@ jobs:
       - name: Build sm64ex
         run: |
           wget --no-check-certificate https://download.qemu.org/qemu-8.2.1.tar.xz
-          tar xf qemu-8.2.1.tar.xz
+          7z x qemu-8.2.1.tar.xz
+          7z x qemu-8.2.1.tar
           cd qemu-8.2.1
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
