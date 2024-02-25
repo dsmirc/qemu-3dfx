@@ -37,7 +37,6 @@ jobs:
             mingw-w64-x86_64-python-sphinx
             mingw-w64-i686-SDL2
             zstd
-            snappy
             pkgconf
             nettle
             binutils
