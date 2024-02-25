@@ -40,6 +40,8 @@ jobs:
             mingw-w64-i686-SDL
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-SDL
+            glib2
+            mingw-w64-x86_64-glib2
             tar
             p7zip
             patch
