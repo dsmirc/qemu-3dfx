@@ -67,6 +67,35 @@ jobs:
             mingw-w64-x86_64-pixman
             mingw-w64-x86_64-libslirp
             python-pip
+            mingw-w64-x86_64-binutils
+            mingw-w64-x86_64-capstone
+            mingw-w64-x86_64-ccache
+            mingw-w64-x86_64-curl
+            mingw-w64-x86_64-cyrus-sasl
+            mingw-w64-x86_64-dtc
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-glib2
+            mingw-w64-x86_64-gnutls
+            mingw-w64-x86_64-gtk3
+            mingw-w64-x86_64-libgcrypt
+            mingw-w64-x86_64-libjpeg-turbo
+            mingw-w64-x86_64-libnfs
+            mingw-w64-x86_64-libpng
+            mingw-w64-x86_64-libssh
+            mingw-w64-x86_64-libtasn1
+            mingw-w64-x86_64-libusb
+            mingw-w64-x86_64-lzo2
+            mingw-w64-x86_64-nettle
+            mingw-w64-x86_64-ninja
+            mingw-w64-x86_64-pixman
+            mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-python
+            mingw-w64-x86_64-SDL2
+            mingw-w64-x86_64-SDL2_image
+            mingw-w64-x86_64-snappy
+            mingw-w64-x86_64-spice
+            mingw-w64-x86_64-usbredir
+            mingw-w64-x86_64-zstd
             python3-pip
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -83,7 +112,7 @@ jobs:
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
           mkdir ../build && cd ../build
-          ../qemu/configure --target-list=i386-softmmu --enable-gtk --enable-sdl && make -j
+          ../qemu/configure --target-list=x86_64-softmmu --enable-gtk --enable-sdl && make -j
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
