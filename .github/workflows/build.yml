@@ -33,7 +33,6 @@ jobs:
             mingw-w64-x86_64-python-sphinx
             mingw-w64-i686-SDL2
             mingw-w64-i686-SDL
-            mingw-w64-python-sphinx
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-SDL
             tar
@@ -42,6 +41,9 @@ jobs:
             python3
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Build sm64ex
+        run: |
+          pip install Sphinx
       - name: Build sm64ex
         run: |
           git clone https://github.com/qemu/qemu.git
