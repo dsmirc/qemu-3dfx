@@ -36,8 +36,24 @@ jobs:
             mingw-w64-x86_64-glew
             mingw-w64-x86_64-python-sphinx
             mingw-w64-i686-SDL2
+            zstd
+            snappy
+            SDL2_image
+            SDL2
+            pkgconf
+            pixman
+            nettle
+            lzo2
+            binutils
+            capstone
+            ccache
+            gtk3
+            gnutls
+            gcc
+            libgcrypt
             ninja
             mingw-w64-i686-SDL
+            mingw-w64-i686-glib2
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-SDL
             glib2
@@ -45,6 +61,13 @@ jobs:
             tar
             p7zip
             patch
+            libjpeg-turbo
+            libnfs
+            libpng
+            libssh
+            libtasn1
+            cyrus-sasl
+            dtc
             python3
             python-pip
             python3-pip
