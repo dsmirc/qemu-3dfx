@@ -38,22 +38,18 @@ jobs:
             mingw-w64-i686-SDL2
             zstd
             snappy
-            SDL2_image
-            SDL2
             pkgconf
-            pixman
             nettle
-            lzo2
             binutils
-            capstone
             ccache
-            gtk3
             gnutls
             gcc
             libgcrypt
             ninja
             mingw-w64-i686-SDL
             mingw-w64-i686-glib2
+            mingw-w64-x86_64-glib2
+            mingw-w64-x86_64-gtk3
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-SDL
             glib2
@@ -61,11 +57,10 @@ jobs:
             tar
             p7zip
             patch
-            libjpeg-turbo
-            libnfs
-            libpng
             libssh
             libtasn1
+            base-devel
+            mingw-w64-x86_64-toolchain
             cyrus-sasl
             dtc
             python3
@@ -80,11 +75,14 @@ jobs:
         run: |
           git clone https://github.com/qemu/qemu.git
           cd qemu
+          git submodule update --init ui/keycodemapdb
+          git submodule update --init capstone
+          git submodule update --init dtc
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
           mkdir ../build && cd ../build
-          ../qemu/configure --target-list=i386-softmmu && make -j
+          ../qemu/configure --target-list=i386-softmmu --enable-gtk --enable-sdl && make -j
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
