@@ -32,6 +32,10 @@ jobs:
             gcc-10-multilib
             gcc-mingw-w64-x86-64-win32-runtime
             gcc-mingw-w64-i686
+            mingw-w64-x86-64-dev
+            mingw-w64-tools-dbgsym
+            mingw-w64-i686-dev
+            mingw-w64-common
             libx11-dev
             libcapstone-dev
             pkgconf
