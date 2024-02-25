@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: C CI
 
 on:
   push:
@@ -22,6 +22,7 @@ jobs:
           install: >-
             git
             make
+            cmake
             rsync
             mingw-w64-i686-toolchain
             mingw-w64-i686-SDL2
@@ -29,6 +30,9 @@ jobs:
             mingw-w64-i686-gcc
             mingw-w64-x86_64-gcc
             mingw-w64-i686-glew
+            mingw-w64-x86_64-cmake
+            mingw-w64-x86_64-make
+            mingw-w64-x86_64-ninja
             mingw-w64-x86_64-glew
             mingw-w64-x86_64-python-sphinx
             mingw-w64-i686-SDL2
