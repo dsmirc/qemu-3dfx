@@ -18,17 +18,21 @@ jobs:
         with:
           apt: >
             binutils-mips-linux-gnu
+            ninja-build
             bsdmainutils
             build-essential
             libaudiofile-dev
             libsdl2-dev
             libusb-1.0-0-dev
+            gcc-mingw-w64
+            gcc-mingw-w64-x86-64-win32-runtime
+            gcc-mingw-w64-i686
             libx11-dev
             libcapstone-dev
             pkgconf
             python3
           pacman-mingw64: git make python3 mingw-w64-x86_64-gcc winpty gdb
-      - name: Build sm64ex
+      - name: Build qemu
         run: |
           wget --no-check-certificate https://download.qemu.org/qemu-8.2.1.tar.xz
           tar xfv qemu-8.2.1.tar.xz
