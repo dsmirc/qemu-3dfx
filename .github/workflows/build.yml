@@ -39,12 +39,14 @@ jobs:
             p7zip
             patch
             python3
+            python-pip
+            python3-pip
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Build sm64ex
+      - name: Install python dependencies
         run: |
           pip install Sphinx
-      - name: Build sm64ex
+      - name: Build Qemu
         run: |
           git clone https://github.com/qemu/qemu.git
           cd qemu
