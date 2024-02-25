@@ -1,0 +1,55 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-i686-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW32
+          update: true
+          install: >-
+            git
+            make
+            mingw-w64-i686-toolchain
+            mingw-w64-i686-SDL2
+            mingw-w64-i686-zlib
+            mingw-w64-i686-gcc
+            mingw-w64-x86_64-gcc
+            mingw-w64-i686-glew
+            mingw-w64-x86_64-glew
+            mingw-w64-i686-SDL2
+            mingw-w64-i686-SDL
+            mingw-w64-x86_64-SDL2
+            mingw-w64-x86_64-SDL
+            python3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Build sm64ex
+        run: |
+          wget --no-check-certificate https://download.qemu.org/qemu-8.2.1.tar.xz
+          tar xfv qemu-8.2.1.tar.xz
+          rm -rfv qemu-8.2.1.tar.xz
+          cd qemu-8.2.1
+          rsync -r ../qemu-0/hw/3dfx ./hw/
+          rsync -r ../qemu-1/hw/mesa ./hw/
+          patch -p0 -i ../00-qemu82x-mesa-glide.patch
+          rm -rfv ../build && mkdir ../build && cd ../build
+          ../qemu-8.2.1/configure --target-list=i386-softmmu --cross-prefix=i686-w64-mingw32- && make -j
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 3dfx-windows
+          path: .
+          retention-days: 0
