@@ -77,11 +77,13 @@ jobs:
         run: |
           git clone https://github.com/qemu/qemu.git
           cd qemu
+          git submodule init
+          git submodule update --recursive
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
           mkdir ../build && cd ../build
-          ../qemu/configure --enable-gtk --enable-sdl && make -j
+          ../qemu/configure --target-list=i386-softmmu --enable-gtk --enable-sdl && make -j
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
