@@ -1,0 +1,47 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build-i686-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: Amitie10g/install-package@main
+        with:
+          apt: >
+            binutils-mips-linux-gnu
+            bsdmainutils
+            build-essential
+            libaudiofile-dev
+            libsdl2-dev
+            libusb-1.0-0-dev
+            libx11-dev
+            libcapstone-dev
+            pkgconf
+            python3
+          pacman-mingw64: git make python3 mingw-w64-x86_64-gcc winpty gdb
+      - name: Build sm64ex
+        run: |
+          wget --no-check-certificate https://download.qemu.org/qemu-8.2.1.tar.xz
+          tar xfv qemu-8.2.1.tar.xz
+          rm -rfv qemu-8.2.1.tar.xz
+          cd qemu-8.2.1
+          rsync -r ../qemu-0/hw/3dfx ./hw/
+          rsync -r ../qemu-1/hw/mesa ./hw/
+          patch -p0 -i ../00-qemu82x-mesa-glide.patch
+          rm -rfv ../build && mkdir ../build && cd ../build
+          ../qemu-8.2.1/configure --target-list=i386-softmmu --cross-prefix=i686-w64-mingw32- && make -j
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: 3dfx-windows
+          path: .
+          retention-days: 0
