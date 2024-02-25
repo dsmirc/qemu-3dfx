@@ -33,6 +33,8 @@ jobs:
             mingw-w64-i686-SDL
             mingw-w64-x86_64-SDL2
             mingw-w64-x86_64-SDL
+            p7zip
+            patch
             python3
       - name: Checkout repository
         uses: actions/checkout@v3
