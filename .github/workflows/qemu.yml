@@ -22,6 +22,7 @@ jobs:
             bsdmainutils
             build-essential
             libaudiofile-dev
+            mingw-w64-tools
             libsdl2-dev
             libusb-1.0-0-dev
             gcc-mingw-w64
