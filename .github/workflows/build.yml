@@ -77,9 +77,6 @@ jobs:
         run: |
           git clone https://github.com/qemu/qemu.git
           cd qemu
-          git submodule update --init ui/keycodemapdb
-          git submodule update --init capstone
-          git submodule update --init dtc
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
