@@ -37,6 +37,11 @@ jobs:
             mingw-w64-i686-dev
             mingw-w64-common
             libx11-dev
+            bison
+            diffutils
+            flex
+            make
+            sed
             libglib2.0-dev
             libfdt-dev
             libpixman-1-dev
@@ -54,7 +59,7 @@ jobs:
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
-          rm -rfv ../build && mkdir ../build && cd ../build
+          mkdir ../build && cd ../build
           ../qemu-8.2.1/configure --target-list=i386-softmmu --disable-docs && make -j
       - name: Upload artifact
         uses: actions/upload-artifact@v3
