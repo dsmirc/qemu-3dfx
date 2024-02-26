@@ -100,7 +100,7 @@ jobs:
           mingw-w64-x86_64-snappy \
           mingw-w64-x86_64-spice \
           mingw-w64-x86_64-usbredir \
-          mingw-w64-x86_64-zstd \
+          mingw-w64-x86_64-zstd'
 
       - name: Build
         run: |
