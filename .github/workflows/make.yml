@@ -9,10 +9,6 @@ jobs:
     strategy:
       matrix:
         cache-name: [msys64-cache]
-    tags: 
-      - shared-windows
-      - windows
-      - windows-1809
     env:
       MSYSTEM: MINGW64
       FF_SCRIPT_SECTIONS: '0'
@@ -22,6 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+        
       - name: Set up MSYS2
         run: |
           Write-Output "Acquiring msys2.exe installer at $(Get-Date -Format u)"
