@@ -115,9 +115,9 @@ jobs:
           cd qemu
           mkdir build
           cd build
-          ..\..\..\msys64\usr\bin\bash -lc "ccache --zero-stats"
-          ..\..\..\msys64\usr\bin\bash -lc "../configure --enable-fdt=system $CONFIGURE_ARGS"
-          ..\..\..\msys64\usr\bin\bash -lc "make"
-          ..\..\..\msys64\usr\bin\bash -lc "make check MTESTARGS='$TEST_ARGS' || { cat meson-logs/testlog.txt; exit 1; } ;"
-          ..\..\..\msys64\usr\bin\bash -lc "ccache --show-stats"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "ccache --zero-stats"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "../configure --enable-fdt=system $CONFIGURE_ARGS"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "make"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "make check MTESTARGS='$TEST_ARGS' || { cat meson-logs/testlog.txt; exit 1; } ;"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "ccache --show-stats"
           Write-Output "Finished build at $(Get-Date -Format u)"
