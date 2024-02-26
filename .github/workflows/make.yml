@@ -18,6 +18,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Clone QEMU
+        run: git clone https://github.com/qemu/qemu.git
 
 
       - name: Set up MSYS2
@@ -53,7 +55,7 @@ jobs:
           }
           Write-Output "Invoking msys2.exe installer at $(Get-Date -Format u)"
           msys64\var\cache\msys2.exe -y
-          ((Get-Content -path .\qemu-3dfx\qemu-3dfx\qemu\msys64\etc\post-install\07-pacman-key.post -Raw) -replace '--refresh-keys', '--version') | Set-Content -Path .\qemu-3dfx\qemu-3dfx\qemu\msys64\etc\post-install\07-pacman-key.post
+          ((Get-Content -path .\qemu-3dfx\qemu\msys64\etc\post-install\07-pacman-key.post -Raw) -replace '--refresh-keys', '--version') | Set-Content -Path .\qemu-3dfx\qemu\msys64\etc\post-install\07-pacman-key.post
           .\qemu\msys64\usr\bin\bash -lc "sed -i 's/^CheckSpace/#CheckSpace/g' /etc/pacman.conf"
           .\qemu\msys64\usr\bin\bash -lc 'pacman --noconfirm -Syuu'  # Core update
           .\qemu\msys64\usr\bin\bash -lc 'pacman --noconfirm -Syuu'  # Normal update
@@ -105,7 +107,6 @@ jobs:
           $env:CCACHE_MAXSIZE = "500M"
           $env:CCACHE_DEPEND = 1 # cache misses are too expensive with preprocessor mode
           $env:CC = "ccache gcc"
-          git clone https://github.com/qemu/qemu.git
           cd qemu
           mkdir build
           cd build
