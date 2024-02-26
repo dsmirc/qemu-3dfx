@@ -114,9 +114,9 @@ jobs:
           $env:CCACHE_DEPEND = 1 # cache misses are too expensive with preprocessor mode
           $env:CC = "ccache gcc"
           cd qemu
-          rsync -r ../qemu-0/hw/3dfx ./hw/
-          rsync -r ../qemu-1/hw/mesa ./hw/
-          patch -p0 -i ../00-qemu82x-mesa-glide.patch
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "rsync -r ../qemu-0/hw/3dfx ./hw/"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "rsync -r ../qemu-1/hw/mesa ./hw/"
+          D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "patch -p0 -i ../00-qemu82x-mesa-glide.patch"
           mkdir build
           cd build
           D:\a\qemu-3dfx\qemu-3dfx\msys64\usr\bin\bash -lc "ccache --zero-stats"
