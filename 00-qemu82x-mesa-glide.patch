@@ -104,13 +104,23 @@ diff -Nru ../orig/qemu-8.2.1/include/hw/i386/pc.h ./include/hw/i386/pc.h
 diff -Nru ../orig/qemu-8.2.1/include/sysemu/kvm.h ./include/sysemu/kvm.h
 --- ../orig/qemu-8.2.1/include/sysemu/kvm.h
 +++ ./include/sysemu/kvm.h
-@@ -116,6 +116,10 @@
- void kvm_guest_memory_init(void);
- void kvm_update_guest_memory(unsigned long va, unsigned long len, bool add);
- void kvm_update_guest_pa_range(uint64_t start_pa, uint64_t size, void *host_va, int readonly, int add);
-+/* GLIDE pass-through */
-+#define GLIDE_MMIO_BASE 0xefffe000
-+/* MESA pass-through */
-+#define MESA_MMIO_BASE 0xfbdff000
-
- #endif /* KVM_H */
+@@ -437,6 +437,8 @@
+ 
+ #endif /* NEED_CPU_H */
+ 
++void kvm_update_guest_pa_range(uint64_t start_pa, uint64_t size, void *host_va, int readonly, int add);
++
+ void kvm_cpu_synchronize_state(CPUState *cpu);
+ 
+ void kvm_init_cpu_signals(CPUState *cpu);
+diff -Nru ../orig/qemu-8.2.1/include/sysemu/whpx.h ./include/sysemu/whpx.h
+--- ../orig/qemu-8.2.1/include/sysemu/whpx.h
++++ ./include/sysemu/whpx.h
+@@ -115,6 +115,7 @@
+  */
+ void whpx_hcall_pending(CPUState *cs);
+ void whpx_hcall_terminate(CPUState *cs);
++void whpx_update_guest_pa_range(uint64_t start_pa, uint64_t size, void *host_va, int readonly, int add);
+ #endif /* CONFIG_WHPX */
+ 
+ #endif /* HAX_H */
