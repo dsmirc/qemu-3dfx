@@ -179,7 +179,6 @@ diff -Nru ../orig/qemu-8.2.1/meson.build ./meson.build
 @@ -3768,6 +3771,11 @@
    if target.endswith('-softmmu')
      target_type='system'
-diff -Nru ../orig/qemu-8.2.1/system/vl.c ./system/vl.c
 --- ../orig/qemu-8.2.1/system/vl.c
 +++ ./system/vl.c
 @@ -864,6 +864,13 @@
