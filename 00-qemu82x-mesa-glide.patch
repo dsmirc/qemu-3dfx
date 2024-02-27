@@ -116,7 +116,7 @@ diff -Nru ../orig/qemu-8.2.1/include/sysemu/kvm.h ./include/sysemu/kvm.h
 diff -Nru ../orig/qemu-8.2.1/include/sysemu/whpx.h ./include/sysemu/whpx.h
 --- ../orig/qemu-8.2.1/include/sysemu/whpx.h
 +++ ./include/sysemu/whpx.h
-@@ -115,6 +115,7 @@
+@@ -115,7 +115,8 @@
   */
  void whpx_hcall_pending(CPUState *cs);
  void whpx_hcall_terminate(CPUState *cs);
