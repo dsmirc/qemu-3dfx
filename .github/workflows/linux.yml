@@ -60,7 +60,8 @@ jobs:
           cp ../meson.build meson.build
           bash ../scripts/sign_commit
           mkdir ../build && cd ../build
-          ../qemu/configure --target-list=i386-softmmu --disable-docs && make CFLAGS="-Wall -Wextra -O2 -Wno-error"
+          meson configure -Dwarning_level=1 -Dwerror=false ..
+          ninja
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
