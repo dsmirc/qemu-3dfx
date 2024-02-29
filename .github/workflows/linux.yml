@@ -62,7 +62,7 @@ jobs:
           bash ../scripts/sign_commit
           mkdir ../build && cd ../build
           ../qemu/configure --target-list=i386-softmmu --disable-docs          
-          meson configure -Dwarning_level=1 -Dwerror=false -Dc_args="-Wno-error=implicit-function-declaration" ..
+          meson configure -Dwarning_level=1 -Dwerror=false -Dc_args="-Wno-error=implicit-function-declaration" -Dc_link_args="-Wno-error=implicit-function-declaration" ..
           make
 
       - name: Upload artifact
