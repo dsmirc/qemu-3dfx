@@ -59,7 +59,6 @@ jobs:
           rsync -r ../qemu-0/hw/3dfx ./hw/
           rsync -r ../qemu-1/hw/mesa ./hw/
           patch -p0 -i ../00-qemu82x-mesa-glide.patch
-          cp ../meson.build meson.build
           bash ../scripts/sign_commit
           rm -rfv ../build && mkdir ../build && cd ../build
       - name: Upload artifact
