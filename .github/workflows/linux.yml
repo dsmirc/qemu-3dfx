@@ -62,6 +62,7 @@ jobs:
           bash ../scripts/sign_commit
           mkdir ../build && cd ../build
           meson configure -Dwarning_level=1 -Dwerror=false ..
+          ../qemu/configure --target-list=i386-softmmu --disable-docs
           make
 
       - name: Upload artifact
