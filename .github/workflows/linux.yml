@@ -62,7 +62,7 @@ jobs:
           bash ../scripts/sign_commit
           mkdir ../build && cd ../build
           meson configure -Dwarning_level=1 -Dwerror=false ..
-          ninja
+          make
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
