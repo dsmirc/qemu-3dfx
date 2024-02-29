@@ -15,6 +15,7 @@ jobs:
         uses: Amitie10g/install-package@main
         with:
           apt: >
+            meson
             binutils-mips-linux-gnu
             ninja-build
             bsdmainutils
