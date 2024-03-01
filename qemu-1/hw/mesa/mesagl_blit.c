@@ -22,6 +22,10 @@
 #include <stdio.h>
 #include "mesagl_impl.h"
 
+#ifdef __linux__
+#include <stdlib.h>
+#endif
+
 int mesa_gui_fullscreen(const void *);
 
 static struct {
