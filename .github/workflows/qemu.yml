@@ -53,6 +53,16 @@ jobs:
           mkdir build && cd build
           bash ../../../scripts/conf_wrapper
           make
+
+      - name: Build Wrappers/Openglide
+        run: |
+          git clone https://github.com/kjliew/qemu-xtra.git
+          cd openglide
+          bash ./bootstrap
+          mkdir build && cd build
+          ../configure --disable-sdl && make
+
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
