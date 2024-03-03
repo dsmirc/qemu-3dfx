@@ -3826,6 +3826,7 @@ foreach target : target_dirs
     target_inc += include_directories('linux-headers', is_system: true)
     link_args += ['-ldl', '-lX11', '-lXxf86vm', '-lGL']
   endif
+
   if target.endswith('-softmmu')
     target_type='system'
     t = target_system_arch[target_base_arch].apply(config_target, strict: false)
